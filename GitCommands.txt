@@ -1,0 +1,133 @@
+Net Ninja Youtube introduction to Git: https://youtu.be/3RjQznt-8kE
+
+
+use GitBash CLI not windows command prompt
+
+cd						change directory to
+cd ..						go back one in directory
+touch (filename.filetype)			make file
+
+mkdir (foldername)				make directory/folder
+
+
+git init					initialize repo
+git status					check out what is staged and see untracked files
+git add (filename)				add one file to staging
+git add .					add all files to staging
+git rm --cached (filename)			remove file from staging
+git commit -m "write message here"		commit from staging area and write message
+
+git log						check out all commits done
+git log --oneline				see condensed log of commits
+
+git checkout (unique commit id)			lets you see code in that state in "view only" mode
+git checkout master				get out of git checkout
+
+git revert (unique commit id)			removes that commit
+	on pop-up screen type $shift:wq
+
+git reset (unique commit id)			erases those commits but doesn't change it in your text editor just yet
+git reset (unique commit id) --hard		totally erases those commits from the log and you cannot go back
+
+
+git branch (new branch name)			creates a new branch under that name
+git branch -a					displays list of all branches (the one you're currently on will be green with an *)
+git checkout (branch name)			puts you in the specified branch
+
+git branch -d (branch name)			deletes branch if branch is already merged with master
+git branch -D (branch name)			deletes branch is branch is not merged
+
+git checkout -b (new branch name)		creates a new branch and navigates into it
+
+git merge (branch name)				merges branch into master (make sure you are located in master branch first before using this command)
+
+git push (GitHub url) (branch name)		push code to Git Hub
+git remote add origin (GitHub url)		adds alias name substitution to the local repo so you don't have to type URL every time
+git clone (GitHub url)				clones online repo to local computer
+git remote -v					if you cloned repo, this tells you the pre-built in alias (so then you can use git push origin master without needign to specify the alias)
+git pull origin master				pull any updates to the online master branch when working on a team before you work on new code
+git push origin (branch name)			push the edits you made to GitHub as your separate branch when working on a team so not to change master branch
+
+
+
+USING GITHUB:
+Don't have any code yet, create remote repo on GitHub and then clone to computer to work on it
+
+Click New Repo button on GitHub
+	Create a ReadMe file b/c this is created from scratch
+Clone repository to computer to start work on it
+	Copy URL to online repo
+	Clone repo to where you want it on your computer
+
+Then if you change your code on your local repo
+	Change the code
+	Add to staging and commit on your local repo
+	Push code to GitHub again, can use (remote -v) built in alias
+	Reload GitHub page and you should see the changes
+
+ 
+Already started a project and have a local repo already:
+
+Click New Repo button on GitHub
+	Make repo name, description, public/private, readme, gitignore and license if desired
+Copy the URL to the online git repo
+	Go to local repository
+	Make sure local repository is most up to date and nothing left to commit (git status)
+	Push code to GitHub (git push (URL))
+	Go to GitHub page and hit reload and you should see the changes
+
+Then if you change your code on your local repo
+	Change the code
+	Add to staging and commit on your local repo
+	Push code to GitHub again, can use URL or set up alias
+	Reload GitHub page and you should see the changes
+
+
+
+
+WORKING WITH A TEAM ON GITHUB:
+
+Always pull from master branch just to make sure your code is up to date before you edit anything
+	Make sure you're on master branch and then use (git pull origin master)
+Make new branch
+	Make you edits, adds, and commits here
+Push to GitHub
+	Use git push origin (branch name) command
+	Go to GitHub and click on "compare and pull request"
+	Add whatever message/comment to tell others what you've done
+	Click "pull request"
+	Other people will review your merge first (can make comments if needed)
+	Click "Merge pull request" when everyone is satisfied with the changes
+	Will automatically update your master branch now
+	You can delete the other branch now if desired
+
+
+If your team didn't like your edit:
+	They leave a comment telling you what to fix
+	You go back to your code, fix it
+	Add to staging on that same branch you were working on, commit to same branch
+	Push to GitHub again using git push origin (branch name) command
+	Will show the changes on the same pull request if you hit refresh
+	Then everybody is happy with the changes, click "Merge pull request" and it updates your master branch
+
+
+
+
+
+USING HEROKU:
+git remote -v 				tells you what your remogite is currently set to
+heroku git:remote -a (app name)		sets remote to this app
+git push heroku yourbranch:master	push a different pycharm branch to heroku master branch
+git push heroku master			push master branch to heroku
+heroku run "otree resetdb"		clear heroku database
+
+git pull heroku master			pull from heroku
+
+git branch -d branch_name		soft delete a branch
+git branch -D branch_name		force delete a branch if not merged yet
+
+https://blog.heroku.com/releases     (rollbacks on heroku)
+http://www.codeblocq.com/2016/02/Stash-your-changes-before-switching-branch/
+
+
+https://otree-games-maggie-testing.herokuapp.com/ | https://git.heroku.com/otree-games-maggie-testing.git
